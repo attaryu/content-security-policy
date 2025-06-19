@@ -1,0 +1,1 @@
+alert('hello from vendor-2.js');

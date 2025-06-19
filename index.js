@@ -9,12 +9,11 @@ const unsafeInline = require('./routes/unsafeInline');
 const unsafeEval = require('./routes/unsafeEval');
 
 const strictCSP = require('./routes/strictCSP');
+const strictDynamic = require('./routes/strictDynamic');
 
 const utils = require('./utils');
 
 const app = express();
-exports.app = app;
-
 
 app.use(cors({
   origin: 'same-origin',
@@ -41,7 +40,9 @@ app.use(
   unsafeInline.router,
   unsafeEval.router,
 
+  // strict csp
   strictCSP.router,
+  strictDynamic.router,
 );
 
 app.listen(utils.port, () => {

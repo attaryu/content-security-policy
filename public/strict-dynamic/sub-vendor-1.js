@@ -1,0 +1,1 @@
+alert('hello from sub-vendor-1.js');
