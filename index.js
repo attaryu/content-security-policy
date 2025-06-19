@@ -100,6 +100,32 @@ app.get('/location', (_, res) => {
     `);
 });
 
+app.get('/unsafe-inline', (_, res) => {
+  res
+    .setHeader('Content-Type', 'text/html')
+    .setHeader('Content-Security-Policy', `script-src 'self' 'unsafe-inline'`)
+    .send(`
+      <h1>Hello World</h1>
+      
+      <script>alert("oh no!")</script>
+      <script>alert("'unsafe-inline' activated")</script>
+      <script src="http://localhost:${port}/static/script.js"></script>
+    `);
+})
+
+app.get('/unsafe-eval', (_, res) => {
+  res
+    .setHeader('Content-Type', 'text/html')
+    .setHeader('Content-Security-Policy', `script-src 'self' 'unsafe-eval' 'unsafe-inline'`)
+    .send(`
+      <h1>Hello World</h1>
+      
+      <script>alert("oh no!")</script>
+      <script>eval(\`alert("'unsafe-eval' activated")\`)</script>
+      <script src="http://localhost:${port}/static/script.js"></script>
+    `);
+});
+
 app.listen(port, () => {
   console.log(`server running on port: ${port}`);
 });
