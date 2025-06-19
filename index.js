@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const crypto = require('node:crypto');
 
 const nonce = require('./routes/nonce');
 const hash = require('./routes/hash');
@@ -8,6 +7,8 @@ const scheme = require('./routes/scheme');
 const location = require('./routes/location');
 const unsafeInline = require('./routes/unsafeInline');
 const unsafeEval = require('./routes/unsafeEval');
+
+const strictCSP = require('./routes/strictCSP');
 
 const utils = require('./utils');
 
@@ -40,7 +41,7 @@ app.use(
   unsafeInline.router,
   unsafeEval.router,
 
-  
+  strictCSP.router,
 );
 
 app.listen(utils.port, () => {
