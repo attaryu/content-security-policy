@@ -7,7 +7,7 @@ router.get('/unsafe-eval', (_, res) => {
     .setHeader('Content-Type', 'text/html')
     .setHeader('Content-Security-Policy', `script-src 'self' 'unsafe-inline' 'unsafe-eval'`)
     .send(`
-      <h1>Hello World</h1>
+      <h1><code>unsafe-eval</code> source expression</h1>
       
       <script>alert("oh no!")</script>
       <script>eval(\`alert("'unsafe-eval' activated")\`)</script>

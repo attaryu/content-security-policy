@@ -7,7 +7,7 @@ router.get('/unsafe-inline', (_, res) => {
     .setHeader('Content-Type', 'text/html')
     .setHeader('Content-Security-Policy', `script-src 'self' 'unsafe-inline'`)
     .send(`
-      <h1>Hello World</h1>
+      <h1><code>unsafe-inline</code> source expression</h1>
       
       <script>alert("oh no!")</script>
       <script>alert("'unsafe-inline' activated")</script>

@@ -19,7 +19,7 @@ router.get('/strict-csp', async (_, res) => {
     .setHeader('Content-Type', 'text/html')
     .setHeader('Content-Security-Policy', `script-src 'nonce-${nonce}' '${integrity}'; object-src 'none'; base-uri 'none';`)
     .send(`
-      <h1>Hello World</h1>
+      <h1>Strict CSP practice</h1>
       
       <script nonce="${nonce}">alert("it's trusted script")</script>
       <script nonce="wkwkwk">alert("this script never executed")</script>

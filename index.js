@@ -1,15 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 
+const root = require('./routes');
+
 const nonce = require('./routes/nonce');
 const hash = require('./routes/hash');
 const scheme = require('./routes/scheme');
 const location = require('./routes/location');
-const unsafeInline = require('./routes/unsafeInline');
-const unsafeEval = require('./routes/unsafeEval');
+const unsafeInline = require('./routes/unsafe-inline');
+const unsafeEval = require('./routes/unsafe-eval');
 
-const strictCSP = require('./routes/strictCSP');
-const strictDynamic = require('./routes/strictDynamic');
+const strictCSP = require('./routes/strict-csp');
+const strictDynamic = require('./routes/strict-dynamic');
 
 const utils = require('./utils');
 
@@ -22,16 +24,10 @@ app.use(cors({
 
 app.use('/static', express.static('public'))
 
-app.get('/', (_, res) => {
-  res
-    .setHeader('Content-Type', 'text/html')
-    .send(`
-      <h1>Hello World!</h1>
-      <p>This is an example of CSP (or <em>Content-Security-Policy</em>) implementations.</p>
-    `);
-});
-
 app.use(
+  // root
+  root.router,
+  
   // source expression
   nonce.router,
   hash.router,

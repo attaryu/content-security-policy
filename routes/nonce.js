@@ -10,7 +10,7 @@ router.get('/nonce', (_, res) => {
     .setHeader('Content-Type', 'text/html')
     .setHeader('Content-Security-Policy', `script-src 'nonce-${nonces}'`)
     .send(`
-      <h1>Hello World</h1>
+      <h1><code>nonce</code> source expression</h1>
       
       <script nonce="${nonces}">alert("it's trusted script")</script>
       <script nonce="wkwkwk">alert("this script never executed")</script>

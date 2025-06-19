@@ -7,7 +7,7 @@ router.get('/scheme', (_, res) => {
     .setHeader('Content-Type', 'text/html')
     .setHeader('Content-Security-Policy', `default-src http:`)
     .send(`
-      <h1>Hello World</h1>
+      <h1><code>scheme</code> source expression</h1>
       
       <script>alert("this first script never executed")</script>
       <script>alert("this seconds script never executed")</script>

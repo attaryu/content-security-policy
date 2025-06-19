@@ -7,7 +7,7 @@ router.get('/location', (_, res) => {
     .setHeader('Content-Type', 'text/html')
     .setHeader('Content-Security-Policy', `img-src 'self' *.unsplash.com`)
     .send(`
-      <h1>Hello World</h1>
+      <h1><code>location</code> source expression</h1>
 
       <img src="http://localhost:${utils.port}/static/yayaya_saya_suka.jpeg" alt="Hokazono Iroha" style="width: 50vw" />
       

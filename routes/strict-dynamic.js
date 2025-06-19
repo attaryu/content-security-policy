@@ -27,7 +27,7 @@ router.get('/strict-dynamic', async (_, res) => {
         </head>
 
         <body>
-          <h1><code>strict-dynamic</code> keyword</h1>
+          <h1><code>strict-dynamic</code> source expression</h1>
         </body>
       </html>
     `)

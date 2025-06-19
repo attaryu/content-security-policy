@@ -30,7 +30,7 @@ router.get('/hash', async (_, res) => {
       `script-src '${hashedScript1}' '${hashedScript2}'`,
     )
     .send(`
-      <h1>Hello World</h1>
+      <h1><code>hash</code> source expression</h1>
       
       <script>${script1}</script>
       <script>alert("this script never executed")</script>
