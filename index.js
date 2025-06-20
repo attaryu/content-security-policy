@@ -13,13 +13,16 @@ const unsafeEval = require('./routes/unsafe-eval');
 const strictCSP = require('./routes/strict-csp');
 const strictDynamic = require('./routes/strict-dynamic');
 
+const policyTesting = require('./routes/policy-testing');
+const CSPReport = require('./routes/csp-report');
+
 const utils = require('./utils');
 
 const app = express();
 
 app.use(cors({
   origin: 'same-origin',
-  methods: 'GET',
+  methods: ['GET', 'POST'],
 }));
 
 app.use('/static', express.static('public'))
@@ -39,6 +42,10 @@ app.use(
   // strict csp
   strictCSP.router,
   strictDynamic.router,
+
+  // policy testing
+  policyTesting.router,
+  CSPReport.router,
 );
 
 app.listen(utils.port, () => {
